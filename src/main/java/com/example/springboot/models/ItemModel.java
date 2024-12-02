@@ -2,7 +2,6 @@ package com.example.springboot.models;
 
 import jakarta.persistence.*;
 import org.springframework.hateoas.RepresentationModel;
-
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -27,20 +26,20 @@ public class ItemModel extends RepresentationModel<ItemModel> implements Seriali
         this.idItem = idItem;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public BigDecimal getValue() {
         return value;
     }
 
     public void setValue(BigDecimal value) {
         this.value = value;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {

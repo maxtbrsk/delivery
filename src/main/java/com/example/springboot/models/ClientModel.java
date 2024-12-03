@@ -7,7 +7,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "TB_CLIENTS")
-public class ClientModel extends RepresentationModel<ClientModel> implements Serializable {
+public class        ClientModel extends RepresentationModel<ClientModel> implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id

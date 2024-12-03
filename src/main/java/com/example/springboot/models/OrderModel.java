@@ -22,6 +22,7 @@ public class OrderModel implements Serializable {
     private String number;
     private String district;
     private String city;
+    private double totalValue;
 
     public UUID getIdOrder() {
         return idOrder;
@@ -85,5 +86,13 @@ public class OrderModel implements Serializable {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public double getTotalValue() {
+        return totalValue;
+    }
+
+    public void setTotalValue(double totalValue) {
+        this.totalValue = totalValue;
     }
 }

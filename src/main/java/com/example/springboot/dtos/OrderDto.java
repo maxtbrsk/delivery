@@ -13,5 +13,8 @@ public record OrderDto(
         @NotBlank String street,
         @NotBlank String number,
         @NotBlank String district,
-        @NotBlank String city
+        @NotBlank String city,
+        double totalValue, // Novo campo
+        String clientName, // Novo campo
+        String clientPhone // Novo campo
 ) {}

@@ -17,6 +17,7 @@ import java.util.UUID;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 @RestController
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/clients")
 public class ClientController {
 
@@ -24,7 +25,13 @@ public class ClientController {
     ClientRepository clientRepository;
 
     @PostMapping
-    public ResponseEntity<ClientModel> saveClient(@RequestBody @Valid ClientRecordDto clientRecordDto){
+    public ResponseEntity<Object> saveClient(@RequestBody @Valid ClientRecordDto clientRecordDto){
+        if (clientRepository.existsByCpf(clientRecordDto.cpf())) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("CPF já cadastrado");
+        }
+        if (clientRepository.existsByTelefone(clientRecordDto.telefone())) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Telefone já cadastrado");
+        }
         var clientModel = new ClientModel();
         BeanUtils.copyProperties(clientRecordDto, clientModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(clientRepository.save(clientModel));

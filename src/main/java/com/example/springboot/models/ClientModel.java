@@ -6,8 +6,11 @@ import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
-@Table(name = "TB_CLIENTS")
-public class        ClientModel extends RepresentationModel<ClientModel> implements Serializable {
+@Table(name = "TB_CLIENTS", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "cpf"),
+        @UniqueConstraint(columnNames = "telefone")
+})
+public class ClientModel extends RepresentationModel<ClientModel> implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
